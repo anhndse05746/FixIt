@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 // import StatusBar from '../containers/StatusBar';
-import {themes} from '../constants/themes';
+import { themes } from '../../config/themes';
 
 import sharedStyles from './Styles';
 
@@ -22,14 +22,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const AuthLoadingView = React.memo(({text}) => (
-  <View style={[styles.container, {backgroundColor: themes.light.backgroundColor}]}>
+const AuthLoadingView = React.memo(({ text }) => (
+  <View style={[styles.container, { backgroundColor: themes.light.backgroundColor }]}>
     {/* <StatusBar /> */}
     {text && (
-    <>
-      <ActivityIndicator color={themes.light.auxiliaryText} size="large" />
-      <Text style={[styles.text, {color: themes.light.bodyText}]}>{`${text}\nPlease wait`}</Text>
-    </>
+      <>
+        <ActivityIndicator color={themes.light.auxiliaryText} size="large" />
+        <Text style={[styles.text, { color: themes.light.bodyText }]}>{`${text}\nPlease wait`}</Text>
+      </>
     )}
   </View>
 ));

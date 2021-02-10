@@ -9,8 +9,9 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native';
-import PTButton from '../containers/Button';
-import {calcScale} from '../utils/dimension';
+
+import PTButton from '../commonComponent/Button';
+import { calcScale } from '../../utils/dimension';
 import CommonStyle from './Styles';
 
 export default class LoginView extends React.Component {
@@ -24,11 +25,11 @@ export default class LoginView extends React.Component {
   }
 
   handleUsername = (username) => {
-    this.setState({username: username});
+    this.setState({ username: username });
   };
 
   handlePassword = (password) => {
-    this.setState({password: password});
+    this.setState({ password: password });
   };
 
   login = (username, password) => {
@@ -42,7 +43,7 @@ export default class LoginView extends React.Component {
         style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ImageBackground
-            source={require('../assets/images/background-login.png')}
+            source={require('../../assets/images/background-login.png')}
             style={styles.backgroundImage}>
             <View style={styles.innerContainer}>
               <Text style={styles.title}>Welcome</Text>
@@ -58,7 +59,7 @@ export default class LoginView extends React.Component {
                 onChangeText={this.handlePassword}
                 secureTextEntry={true}
               />
-              <View style={{alignItems: 'center'}}>
+              <View style={{ alignItems: 'center' }}>
                 <PTButton
                   title="Login"
                   onPress={() =>

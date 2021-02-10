@@ -1,21 +1,22 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import AnnoucementView from '../views/AnnouncementView';
-import MyRequestView from '../views/MyRequestView';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import HomeView from '../views/HomeView';
 import ServiceListView from '../views/ServiceView/ServiceListView';
 import MyProfileView from '../views/MyProfileView';
-import {createStackNavigator} from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import {calcScale} from '../utils/dimension';
+import AnnoucementView from '../views/AnnouncementView';
+import MyRequestView from '../views/MyRequestView';
+import { calcScale } from '../../utils/dimension';
 
 const InsideTabBottom = createBottomTabNavigator();
 
 const InsideTabBottomNavigator = () => {
   return (
     <InsideTabBottom.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color, size}) => {
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
           if (route.name === 'HomeStackNavigator') {
             return <Icon name="home" size={calcScale(22)} color={color} />;
           } else if (route.name === 'MyRequestView') {
@@ -52,7 +53,7 @@ const HomeStackNavigator = () => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
         name="HomeView"
         component={HomeView}
       />

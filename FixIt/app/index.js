@@ -1,12 +1,12 @@
-import {Provider as PaperProvider} from 'react-native-paper';
+import { Provider as PaperProvider } from 'react-native-paper';
 import React from 'react';
 import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import RNScreens from 'react-native-screens';
-import store from './libs/store';
+import store from './store/store';
 import AppContainer from './AppContainer';
 
 RNScreens.enableScreens();

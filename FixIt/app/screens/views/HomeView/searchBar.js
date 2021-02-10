@@ -11,16 +11,17 @@ import {
   Animated,
   Easing,
 } from 'react-native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
+import { SearchBar } from 'react-native-elements';
 
-import {width, height, calcScale} from '../../utils/dimension';
-import {TouchableHighlight} from 'react-native-gesture-handler';
-import {themes} from '../../constants/themes';
+import { width, height, calcScale } from '../../../utils/dimension';
+import { themes } from '../../../config/themes';
 import commonStyles from '../Styles';
-import {SearchBar} from 'react-native-elements';
 
-const {Value, timing} = Animated;
 
-const SearchView = ({navigation}) => {
+const { Value, timing } = Animated;
+
+const SearchView = ({ navigation }) => {
   const searchInputRef = React.useRef(null);
   const [isOnSearch, setOnSearch] = React.useState(false);
   const [searchVal, setSearchVal] = React.useState(null);
@@ -96,9 +97,9 @@ const SearchView = ({navigation}) => {
               style={styles.iconBox}>
               <Icon name="bars" size={calcScale(22)} color="#000000" />
             </TouchableHighlight>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{ flexDirection: 'row' }}>
               <Text
-                style={{fontFamily: 'Cochin', fontSize: 22, fontWeight: '700'}}>
+                style={{ fontFamily: 'Cochin', fontSize: 22, fontWeight: '700' }}>
                 Fix It
               </Text>
             </View>
@@ -118,7 +119,7 @@ const SearchView = ({navigation}) => {
           styles.content,
           {
             opacity: _content_opacity,
-            transform: [{translateY: _content_translate_y}],
+            transform: [{ translateY: _content_translate_y }],
           },
         ]}>
         <SafeAreaView style={styles.contentSafeArea}>
@@ -130,9 +131,9 @@ const SearchView = ({navigation}) => {
             showLoading
             platform="ios"
             cancelButtonTitle="Cancel"
-            searchIcon={{size: calcScale(24)}}
-            inputContainerStyle={{borderRadius: 50, height: 25}}
-            inputStyle={{fontSize: 15}}
+            searchIcon={{ size: calcScale(24) }}
+            inputContainerStyle={{ borderRadius: 50, height: 25 }}
+            inputStyle={{ fontSize: 15 }}
             placeholder="Search..."
             onChangeText={(text) => setSearchVal(text)}
             value={searchVal}
@@ -142,48 +143,13 @@ const SearchView = ({navigation}) => {
           <View style={styles.contentInner}>
             <View style={styles.separator} />
             {searchVal != null &&
-            searchVal !== undefined &&
-            '' !== searchVal.trim() ? (
-              <ScrollView>
-                <View style={styles.searchItem}>
-                  <Icon
-                    style={styles.itemIcon}
-                    name="search"
-                    size={16}
-                    color="#cccccc"
-                  />
-                  <Text>Fake result 1</Text>
-                </View>
-                <View style={styles.searchItem}>
-                  <Icon
-                    style={styles.itemIcon}
-                    name="search"
-                    size={16}
-                    color="#cccccc"
-                  />
-                  <Text>Fake result 2</Text>
-                </View>
-                <View style={styles.searchItem}>
-                  <Icon
-                    style={styles.itemIcon}
-                    name="search"
-                    size={16}
-                    color="#cccccc"
-                  />
-                  <Text>Fake result 3</Text>
-                </View>
-              </ScrollView>
-            ) : (
-              <View>
-                <View style={styles.recentBox}>
-                  <Text style={styles.recentText}>Recent Searches</Text>
-                </View>
-                <View style={styles.separator} />
+              searchVal !== undefined &&
+              '' !== searchVal.trim() ? (
                 <ScrollView>
                   <View style={styles.searchItem}>
                     <Icon
                       style={styles.itemIcon}
-                      name="history"
+                      name="search"
                       size={16}
                       color="#cccccc"
                     />
@@ -192,7 +158,7 @@ const SearchView = ({navigation}) => {
                   <View style={styles.searchItem}>
                     <Icon
                       style={styles.itemIcon}
-                      name="history"
+                      name="search"
                       size={16}
                       color="#cccccc"
                     />
@@ -201,15 +167,50 @@ const SearchView = ({navigation}) => {
                   <View style={styles.searchItem}>
                     <Icon
                       style={styles.itemIcon}
-                      name="history"
+                      name="search"
                       size={16}
                       color="#cccccc"
                     />
                     <Text>Fake result 3</Text>
                   </View>
                 </ScrollView>
-              </View>
-            )}
+              ) : (
+                <View>
+                  <View style={styles.recentBox}>
+                    <Text style={styles.recentText}>Recent Searches</Text>
+                  </View>
+                  <View style={styles.separator} />
+                  <ScrollView>
+                    <View style={styles.searchItem}>
+                      <Icon
+                        style={styles.itemIcon}
+                        name="history"
+                        size={16}
+                        color="#cccccc"
+                      />
+                      <Text>Fake result 1</Text>
+                    </View>
+                    <View style={styles.searchItem}>
+                      <Icon
+                        style={styles.itemIcon}
+                        name="history"
+                        size={16}
+                        color="#cccccc"
+                      />
+                      <Text>Fake result 2</Text>
+                    </View>
+                    <View style={styles.searchItem}>
+                      <Icon
+                        style={styles.itemIcon}
+                        name="history"
+                        size={16}
+                        color="#cccccc"
+                      />
+                      <Text>Fake result 3</Text>
+                    </View>
+                  </ScrollView>
+                </View>
+              )}
           </View>
         </SafeAreaView>
       </Animated.View>

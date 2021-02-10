@@ -1,6 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
-import {calcScale} from '../../utils/dimension';
+import { StyleSheet, Text } from 'react-native';
+
+import { calcScale } from '../../../utils/dimension';
 import FBSearchBar from './searchBar';
 
 export default class HomeView extends React.Component {
@@ -9,9 +10,9 @@ export default class HomeView extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
-  componentWillUnmount() {}
+  componentWillUnmount() { }
 
   render() {
     return (

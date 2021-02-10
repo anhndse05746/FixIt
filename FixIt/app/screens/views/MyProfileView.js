@@ -2,7 +2,8 @@ import React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { calcScale } from '../utils/dimension';
+
+import { calcScale } from '../../utils/dimension';
 import commonStyles from './Styles';
 
 export default class MyProfileView extends React.Component {
