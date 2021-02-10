@@ -1,9 +1,9 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import sharedStyles from '../views/Styles';
-import {getReadableVersion} from '../utils/deviceInfo';
+import { getReadableVersion } from '../../utils/deviceInfo';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppVersion = React.memo(({}) => (
+const AppVersion = React.memo(({ }) => (
   <View style={styles.container}>
-    <Text style={[styles.text, {color: '#9ca2a8'}]}>
+    <Text style={[styles.text, { color: '#9ca2a8' }]}>
       Version
       <Text style={styles.bold}>{getReadableVersion}</Text>
     </Text>
