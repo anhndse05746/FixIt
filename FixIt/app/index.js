@@ -6,7 +6,7 @@ import {
 } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import RNScreens from 'react-native-screens';
-import store from './store/store';
+import store from './store/configureStore';
 import AppContainer from './AppContainer';
 
 RNScreens.enableScreens();
