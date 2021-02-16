@@ -3,16 +3,17 @@ import {
   Text,
   View,
   StyleSheet,
-  ImageBackground,
+  Image,
   KeyboardAvoidingView,
   TextInput,
   Keyboard,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from 'react-native';
 
 import PTButton from '../commonComponent/Button';
-import { calcScale } from '../../utils/dimension';
-import CommonStyle from './Styles';
+import {calcScale} from '../../utils/dimension';
+import CommonStyles from './Styles';
 
 export default class LoginView extends React.Component {
   constructor(props) {
@@ -25,11 +26,11 @@ export default class LoginView extends React.Component {
   }
 
   handleUsername = (username) => {
-    this.setState({ username: username });
+    this.setState({username: username});
   };
 
   handlePassword = (password) => {
-    this.setState({ password: password });
+    this.setState({password: password});
   };
 
   login = (username, password) => {
@@ -42,12 +43,17 @@ export default class LoginView extends React.Component {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <ImageBackground
-            source={require('../../assets/images/background-login.png')}
-            style={styles.backgroundImage}>
+          <View style={styles.backgroundContainer}>
+            <View style={styles.logoContainer}>
+              <Image
+                source={require('../../assets/images/fixit-appCustomer.png')}
+                style={styles.logo}
+                resizeMode="contain"
+              />
+            </View>
             <View style={styles.innerContainer}>
-              <Text style={styles.title}>Welcome</Text>
-              <Text style={styles.caption}>Sign in to continues</Text>
+              <Text style={styles.textBold}>Chào mừng bạn!</Text>
+              <Text style={styles.textRegular}>Đăng nhập để tiếp tục</Text>
               <TextInput
                 style={styles.input}
                 placeholder="Username"
@@ -59,61 +65,123 @@ export default class LoginView extends React.Component {
                 onChangeText={this.handlePassword}
                 secureTextEntry={true}
               />
-              <View style={{ alignItems: 'center' }}>
+              <TouchableOpacity>
+                <Text style={styles.forgotPassword}>Quên mật khẩu?</Text>
+              </TouchableOpacity>
+              <View style={{alignItems: 'center'}}>
                 <PTButton
-                  title="Login"
+                  title="Đăng nhập"
                   onPress={() =>
                     this.login(this.state.username, this.state.password)
                   }
                   style={styles.loginButton}
+                  color="#000"
                 />
               </View>
             </View>
-          </ImageBackground>
+            <View style={styles.footerContainer}>
+              <View style={styles.row}>
+                <Text style={styles.textRegular}>Bạn chưa có tài khoản?</Text>
+                <TouchableOpacity>
+                  <Text
+                    style={[
+                      styles.textRegular,
+                      {textDecorationLine: 'underline'},
+                    ]}>
+                    Đăng kí ngay
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.line} />
+              <TouchableOpacity
+                style={[
+                  styles.row,
+                  {
+                    backgroundColor: '#fff',
+                    justifyContent: 'space-between',
+                    height: calcScale(40),
+                    borderRadius: 10,
+                    marginTop: calcScale(5),
+                  },
+                ]}>
+                <Image
+                  source={require('../../assets/images/google-logo.png')}
+                  resizeMode="contain"
+                  style={{height: calcScale(40), flex: 0.15}}
+                />
+                <Text style={[styles.textRegular, {color: '#000', flex: 0.75}]}>
+                  Đăng nhập với Google
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     );
   }
 }
 
-//  navigation.navigate('DrawerInside');
-
 const styles = StyleSheet.create({
   container: {
-    ...CommonStyle.container,
+    ...CommonStyles.container,
   },
-  backgroundImage: {
+  backgroundContainer: {
     flex: 1,
-    width: '100%',
+    justifyContent: 'space-around',
+    backgroundColor: 'rgb(242, 85, 44)',
+  },
+  logoContainer: {
+    alignItems: 'center',
+  },
+  logo: {
+    height: calcScale(60),
   },
   innerContainer: {
-    flex: 1,
-    margin: calcScale(80),
     justifyContent: 'center',
-    paddingTop: calcScale(250),
+    marginHorizontal: calcScale(40),
   },
-  title: {
-    ...CommonStyle.textBold,
-    fontSize: 25,
-    color: '#0066ff',
+  textBold: {
+    ...CommonStyles.textBold,
+    fontSize: 30,
+    color: '#fff',
   },
-  caption: {
-    ...CommonStyle.textRegular,
+  textRegular: {
+    ...CommonStyles.textRegular,
+    fontSize: 20,
+    color: '#fff',
+  },
+  forgotPassword: {
+    ...CommonStyles.textRegular,
     fontSize: 18,
-    color: '#000',
+    color: '#fff',
+    textAlign: 'right',
+    paddingTop: calcScale(10),
   },
   input: {
-    ...CommonStyle.textInput,
     marginTop: calcScale(15),
-    paddingLeft: calcScale(10),
-    paddingRight: calcScale(10),
-    backgroundColor: '#e8f0fe',
-    borderRadius: 5,
+    paddingHorizontal: calcScale(10),
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    height: calcScale(50),
   },
   loginButton: {
     marginTop: calcScale(20),
-    width: calcScale(150),
-    height: calcScale(50),
-    borderRadius: 5,
+    width: '100%',
+    height: calcScale(45),
+    borderRadius: 10,
+    backgroundColor: '#fff',
+  },
+  footerContainer: {
+    justifyContent: 'center',
+    marginHorizontal: calcScale(40),
+  },
+  line: {
+    borderWidth: 0.5,
+    borderColor: '#fff',
+    marginVertical: calcScale(10),
+  },
+  row: {
+    ...CommonStyles.row,
+    justifyContent: 'space-around',
   },
 });

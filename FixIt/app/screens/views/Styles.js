@@ -106,10 +106,8 @@ export default StyleSheet.create({
     marginTop: -34,
     paddingHorizontal: 30,
   },
-  textInput: {
-    borderStyle: 'solid',
-    borderColor: '#000',
-    borderWidth: 0.5,
-    height: 40
-  }
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });
